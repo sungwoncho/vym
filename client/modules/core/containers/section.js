@@ -12,7 +12,8 @@ export const composer = ({context, section}, onData) => {
 };
 
 export const depsMapper = (context, actions) => ({
-  context: () => context
+  context: () => context,
+  removeFromSlide: actions.slideDecks.removeFromSlide
 });
 
 export default composeAll(

@@ -99,7 +99,24 @@ export default function () {
       });
 
       let slides = _a(slideDeck.slides)
-        .update({numbeR: slideNumber}, slide)
+        .update({number: slideNumber}, slide)
+        .getVal();
+
+      SlideDecks.update(slideDeckId, {$set: {slides}});
+    },
+
+    'slideDecks.removeFromSlide'(slideDeckId, slideNumber, sectionIndex) {
+      check(slideDeckId, String);
+      check(slideNumber, Number);
+      check(sectionIndex, Number);
+
+      let slideDeck = SlideDecks.findOne(slideDeckId);
+      let slide = slideDeck.getSlideByNumber(slideNumber);
+
+      slide.sections.splice(sectionIndex, 1);
+
+      let slides = _a(slideDeck.slides)
+        .update({number: slideNumber}, slide)
         .getVal();
 
       SlideDecks.update(slideDeckId, {$set: {slides}});

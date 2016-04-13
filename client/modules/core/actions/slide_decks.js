@@ -39,5 +39,9 @@ export default {
 
   addToSlide({Meteor}, slideDeckId, slideNumber, filename) {
     Meteor.call('slideDecks.addToSlide', slideDeckId, slideNumber, filename);
+  },
+
+  removeFromSlide({Meteor}, slideDeckId, slideNumber, sectionIndex) {
+    Meteor.call('slideDecks.removeFromSlide', slideDeckId, slideNumber, sectionIndex);
   }
 };

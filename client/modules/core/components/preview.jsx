@@ -8,8 +8,11 @@ const Preview = ({slideDeck, currentSlideNum}) => {
   return (
     <div className="preview">
       {
-        currentSlide.sections.map(section => (
-          <Section section={section} />
+        currentSlide.sections.map((section, sectionIndex) => (
+          <Section section={section}
+            sectionIndex={sectionIndex}
+            slideDeck={slideDeck}
+            currentSlideNum={currentSlideNum} />
         ))
       }
     </div>
