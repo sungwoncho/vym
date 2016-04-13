@@ -122,13 +122,16 @@ export default function () {
       let slideDeck = SlideDecks.findOne(slideDeckId);
       let slide = slideDeck.getSlideByNumber(slideNumber);
 
-      slide.sections.splice(sectionIndex, 1);
+      // Array containing the removed section
+      let removedSections = slide.sections.splice(sectionIndex, 1);
 
       let slides = _a(slideDeck.slides)
         .update({number: slideNumber}, slide)
         .getVal();
 
       SlideDecks.update(slideDeckId, {$set: {slides}});
+
+      return removedSections[0];
     },
 
     'slideDecks.reorderSection'(slideDeckId, slideNumber, fromIndex, toIndex) {

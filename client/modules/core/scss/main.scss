@@ -124,7 +124,11 @@
   width: 100%;
   padding: 1em 2em;
   overflow: scroll;
-  flex: 1
+  flex: 1;
+
+  .section {
+    margin-bottom: 10px;
+  }
 }
 
 // File list

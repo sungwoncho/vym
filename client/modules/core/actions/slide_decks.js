@@ -48,8 +48,17 @@ export default {
     });
   },
 
-  removeFromSlide({Meteor}, slideDeckId, slideNumber, sectionIndex) {
-    Meteor.call('slideDecks.removeFromSlide', slideDeckId, slideNumber, sectionIndex);
+  removeFromSlide({Meteor, Collections}, slideDeckId, slideNumber, sectionIndex) {
+    function onSuccess(err, removedSection) {
+      // Update local collection
+      Collections.Files.update({filename: removedSection.filename}, {
+        $unset: {
+          'vym.slideNumber': 1
+        }
+      });
+    }
+
+    Meteor.call('slideDecks.removeFromSlide', slideDeckId, slideNumber, sectionIndex, onSuccess);
   },
 
   reorderSection({Meteor}, slideDeckId, slideNumber, fromIndex, toIndex) {

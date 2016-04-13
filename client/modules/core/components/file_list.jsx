@@ -15,13 +15,20 @@ const FileList = ({files, addToSlide, slideDeck, currentSlideNum}) => (
 
 const FileItem = ({file, addToSlide, slideDeck, currentSlideNum}) => {
 
-  function onFileAdd() {
-    addToSlide(slideDeck._id, currentSlideNum, file.filename);
+  function onFileClick() {
+    if (!file.vym.slideNumber) { // if not already added to a slide
+      addToSlide(slideDeck._id, currentSlideNum, file.filename);
+    }
+  }
+
+  function baseName(str) {
+    return str.split(/[\\/]/).pop();
   }
 
   return (
-    <li className="file-item" onClick={onFileAdd}>
-      {file.filename}
+    <li className="file-item" onClick={onFileClick}>
+      <div>{baseName(file.filename)}</div>
+      <small>{file.filename}</small>
 
       {
         file.vym.slideNumber ?
