@@ -86,17 +86,13 @@
 
 // Wizard
 
-
-
 .w-container {
   height: 100vh;
   display: flex;
-  flex-direction: column;
-
+  // flex-direction: column;
 
   .wizard {
     flex: auto;
-    display: flex;
   }
 
   .w-sidebar {
@@ -110,14 +106,15 @@
   .w-main {
     flex: auto;
     display: flex;
-    overflow: scroll;
-    padding: 1em 2em;
+    flex-direction: column;
+    padding: 0;
   }
 
 
   .w-sidebar-footer {
     background-color: #eceeef;
-    padding: 20px;
+    flex: none;
+    height: 40px;
   }
 }
 
@@ -125,10 +122,39 @@
 
 .preview {
   width: 100%;
+  padding: 1em 2em;
+  overflow: scroll;
+  flex: 1
 }
 
 // File list
 
 .file-list {
   flex: 1;
+}
+
+// Actionb bar
+
+.action-bar {
+  background-color: #ECEEEF;
+  flex: none;
+  height: 40px;
+  padding: 5px 20px;
+
+  .current-progress {
+    display: inline-block;
+    padding: 0 2em;
+  }
+
+  .navgiation {
+    display: inline-block;
+  }
+
+  .actions {
+    display: inline-block;
+  }
+
+  div {
+    display: inline-block;
+  }
 }
