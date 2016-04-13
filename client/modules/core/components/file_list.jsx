@@ -22,6 +22,14 @@ const FileItem = ({file, addToSlide, slideDeck, currentSlideNum}) => {
   return (
     <li className="file-item" onClick={onFileAdd}>
       {file.filename}
+
+      {
+        file.vym.slideNumber ?
+          <div className="pull-xs-right">
+            <i className="fa fa-check"></i> {file.vym.slideNumber}
+          </div> :
+          <span></span>
+      }
     </li>
   );
 };

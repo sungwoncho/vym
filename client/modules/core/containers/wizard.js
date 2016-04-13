@@ -15,7 +15,8 @@ export const composer = ({context, ownerName, repoName, prNumber}, onData) => {
 export const depsMapper = (context, actions) => ({
   context: () => context,
   getFiles: actions.files.getFiles,
-  clearFiles: actions.files.clearFiles
+  clearFiles: actions.files.clearFiles,
+  updateFileInfos: actions.files.updateFileInfos
 });
 
 export default composeAll(

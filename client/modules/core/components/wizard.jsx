@@ -6,9 +6,9 @@ import ActionBar from '../containers/action_bar';
 
 class Wizard extends React.Component {
   componentDidMount() {
-    const {getFiles, ownerName, repoName, prNumber} = this.props;
+    const {getFiles, ownerName, repoName, prNumber, slideDeck} = this.props;
 
-    getFiles(ownerName, repoName, prNumber);
+    getFiles(ownerName, repoName, prNumber, slideDeck);
     document.body.classList.add('no-overscroll');
   }
 

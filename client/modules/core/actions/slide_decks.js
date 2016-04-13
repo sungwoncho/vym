@@ -37,8 +37,15 @@ export default {
     Meteor.call('slideDecks.reorderSlide', slideDeckId, fromSlideNumber, toSlideNumber, onSuccess);
   },
 
-  addToSlide({Meteor}, slideDeckId, slideNumber, filename) {
+  addToSlide({Meteor, Collections}, slideDeckId, slideNumber, filename) {
     Meteor.call('slideDecks.addToSlide', slideDeckId, slideNumber, filename);
+
+    // Update local collection
+    Collections.Files.update({filename}, {
+      $set: {
+        'vym.slideNumber': slideNumber
+      }
+    });
   },
 
   removeFromSlide({Meteor}, slideDeckId, slideNumber, sectionIndex) {
