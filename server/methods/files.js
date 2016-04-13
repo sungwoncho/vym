@@ -36,6 +36,8 @@ export default function () {
       files.forEach(function (file) {
         if (file.patch) {
           file.patch = parseDiff(file.patch);
+        } else {
+          file.patch = [];
         }
       });
 
