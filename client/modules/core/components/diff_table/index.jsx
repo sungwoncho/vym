@@ -23,7 +23,7 @@ const DiffTable = ({file, handleRemove}) => {
       <Table file={file} />
     </div>
   );
-}
+};
 
 const Table = ({file}) => (
   <div className="dt-wrapper">

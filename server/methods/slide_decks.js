@@ -120,6 +120,26 @@ export default function () {
         .getVal();
 
       SlideDecks.update(slideDeckId, {$set: {slides}});
+    },
+
+    'slideDecks.reorderSection'(slideDeckId, slideNumber, fromIndex, toIndex) {
+      check(slideDeckId, String);
+      check(slideNumber, Number);
+      check(fromIndex, Number);
+      check(toIndex, Number);
+
+      let slideDeck = SlideDecks.findOne(slideDeckId);
+      let slide = slideDeck.getSlideByNumber(slideNumber);
+
+      let sectionToMove = slide.sections[fromIndex];
+      slide.sections[fromIndex] = slide.sections[toIndex];
+      slide.sections[toIndex] = sectionToMove;
+
+      let slides = _a(slideDeck.slides)
+        .update({number: slideNumber}, slide)
+        .getVal();
+
+      SlideDecks.update(slideDeckId, {$set: {slides}});
     }
 
   });

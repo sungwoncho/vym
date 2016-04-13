@@ -1,20 +1,15 @@
 import React from 'react';
 
-import Section from '../containers/section';
+import SectionList from '../containers/section_list';
 
 const Preview = ({slideDeck, currentSlideNum}) => {
   let currentSlide = slideDeck.getSlideByNumber(currentSlideNum);
 
   return (
     <div className="preview">
-      {
-        currentSlide.sections.map((section, sectionIndex) => (
-          <Section section={section}
-            sectionIndex={sectionIndex}
-            slideDeck={slideDeck}
-            currentSlideNum={currentSlideNum} />
-        ))
-      }
+      <SectionList sections={currentSlide.sections}
+        slideDeck={slideDeck}
+        currentSlideNum={currentSlideNum} />
     </div>
   );
 };

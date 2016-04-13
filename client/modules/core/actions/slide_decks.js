@@ -43,5 +43,9 @@ export default {
 
   removeFromSlide({Meteor}, slideDeckId, slideNumber, sectionIndex) {
     Meteor.call('slideDecks.removeFromSlide', slideDeckId, slideNumber, sectionIndex);
+  },
+
+  reorderSection({Meteor}, slideDeckId, slideNumber, fromIndex, toIndex) {
+    Meteor.call('slideDecks.reorderSection', slideDeckId, slideNumber, fromIndex, toIndex);
   }
 };
