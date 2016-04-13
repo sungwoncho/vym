@@ -89,32 +89,51 @@
 .w-container {
   height: 100vh;
   display: flex;
-  // flex-direction: column;
+  flex-direction: column;
+  padding: 0;
+
+  &.container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+  }
 
   .wizard {
     flex: auto;
+  }
+
+  .w-header {
+    height: 40px;
+    background-color: #eee;
+    text-align: center;
   }
 
   .w-sidebar {
     flex: auto;
     display: flex;
     flex-direction: column;
-    padding: 0;
     border-right: 1px solid #eee;
+    padding-right: 0;
+    padding-left: 0;
   }
 
   .w-main {
     flex: auto;
-    display: flex;
-    flex-direction: column;
+    // flex-direction: column;
     padding: 0;
+    display: flex;
   }
 
 
   .w-sidebar-footer {
     background-color: #eceeef;
-    flex: none;
     height: 40px;
+    text-align: center;
+  }
+
+  .w-preview {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
   }
 }
 
@@ -136,6 +155,8 @@
 .file-list-container {
   flex: 1;
   overflow-y: scroll;
+  padding-left: 10px;
+  padding-right: 10px;
 
   .file-list {
 

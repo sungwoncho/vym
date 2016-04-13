@@ -3,6 +3,7 @@ import React from 'react';
 import FileList from '../containers/file_list';
 import Preview from '../containers/preview';
 import ActionBar from '../containers/action_bar';
+import WizardHeader from '../containers/wizard_header';
 
 class Wizard extends React.Component {
   componentDidMount() {
@@ -24,9 +25,10 @@ class Wizard extends React.Component {
     const {ownerName, repoName, prNumber, slideDeck, currentSlideNum} = this.props;
 
     return (
-      <div className="container-fluid">
-        <div className="row w-container">
-          <div className="col-sm-12 col-md-3 w-sidebar">
+      <div className="container-fluid w-container">
+        <WizardHeader slideDeck={slideDeck} />
+        <div className="row w-main">
+          <div className="w-sidebar col-sm-12 col-md-3">
             <FileList ownerName={ownerName}
               repoName={repoName}
               prNumber={prNumber}
@@ -36,7 +38,7 @@ class Wizard extends React.Component {
               vym
             </div>
           </div>
-          <div className="col-sm-12 col-md-9 w-main">
+          <div className="col-sm-12 col-md-9 w-preview">
             <Preview slideDeck={slideDeck} currentSlideNum={currentSlideNum} />
             <ActionBar currentSlideNum={currentSlideNum} slideDeck={slideDeck} />
           </div>
