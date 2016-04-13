@@ -93,6 +93,15 @@ export default function () {
 
       let slideDeck = SlideDecks.findOne(slideDeckId);
       let slide = slideDeck.getSlideByNumber(slideNumber);
+
+      // check duplicate
+      for (var i = 0; i < slide.sections.length; i++) {
+        if (slide.sections[i].filename === filename) {
+          throw new Meteor.Error('duplicate-filename',
+            'The same filename has already been added to that slide');
+        }
+      }
+
       slide.sections.push({
         type: 'file',
         filename
