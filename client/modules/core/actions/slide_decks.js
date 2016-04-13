@@ -35,5 +35,9 @@ export default {
     }
 
     Meteor.call('slideDecks.reorderSlide', slideDeckId, fromSlideNumber, toSlideNumber, onSuccess);
+  },
+
+  addToSlide({Meteor}, slideDeckId, slideNumber, filename) {
+    Meteor.call('slideDecks.addToSlide', slideDeckId, slideNumber, filename);
   }
 };

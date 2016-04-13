@@ -11,6 +11,7 @@
   border-width: 0 1px 1px 1px;
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
+  display: none;
 }
 
 .diff-table {
@@ -129,8 +130,22 @@
 
 // File list
 
-.file-list {
+.file-list-container {
   flex: 1;
+  overflow-y: scroll;
+
+  .file-list {
+
+     .file-item {
+       padding: 12px 20px;
+       font-size: 14px;
+       cursor: pointer;
+
+       &:hover {
+         background-color: #eee;
+       }
+     }
+  }
 }
 
 // Actionb bar

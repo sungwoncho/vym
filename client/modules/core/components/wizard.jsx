@@ -27,9 +27,13 @@ class Wizard extends React.Component {
       <div className="container-fluid">
         <div className="row w-container">
           <div className="col-sm-12 col-md-3 w-sidebar">
-            <FileList ownerName={ownerName} repoName={repoName} prNumber={prNumber} />
+            <FileList ownerName={ownerName}
+              repoName={repoName}
+              prNumber={prNumber}
+              slideDeck={slideDeck}
+              currentSlideNum={currentSlideNum} />
             <div className="w-sidebar-footer">
-              hello
+              vym
             </div>
           </div>
           <div className="col-sm-12 col-md-9 w-main">

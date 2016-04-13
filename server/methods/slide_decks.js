@@ -10,7 +10,8 @@ export default function () {
       let sd = SlideDecks.findOne({ownerName, repoName, prNumber});
 
       if (!sd) {
-        SlideDecks.insert({ownerName, repoName, prNumber});
+        let newSdId = SlideDecks.insert({ownerName, repoName, prNumber, slides: []});
+        Meteor.call('slideDecks.addSlideInDeck', newSdId, 1);
       }
     },
 
@@ -81,6 +82,25 @@ export default function () {
                          .setElmNumber(targetSlide.uid, toSlideNumber)
                          .sort()
                          .getVal();
+
+      SlideDecks.update(slideDeckId, {$set: {slides}});
+    },
+
+    'slideDecks.addToSlide'(slideDeckId, slideNumber, filename) {
+      check(slideDeckId, String);
+      check(slideNumber, Number);
+      check(filename, String);
+
+      let slideDeck = SlideDecks.findOne(slideDeckId);
+      let slide = slideDeck.getSlideByNumber(slideNumber);
+      slide.sections.push({
+        type: 'file',
+        filename
+      });
+
+      let slides = _a(slideDeck.slides)
+        .update({numbeR: slideNumber}, slide)
+        .getVal();
 
       SlideDecks.update(slideDeckId, {$set: {slides}});
     }

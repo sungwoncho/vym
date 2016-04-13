@@ -3,7 +3,10 @@ import {Meteor} from 'meteor/meteor';
 import {check} from 'meteor/check';
 
 export default function () {
-  Meteor.publish('repos', function (reposId) {
-    return Repos.find(reposId);
+  Meteor.publish('repo', function (ownerName, repoName) {
+    check(ownerName, String);
+    check(repoName, String);
+
+    return Repos.find({'owner.login': ownerName, name: repoName});
   });
 }

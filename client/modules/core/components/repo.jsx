@@ -7,6 +7,8 @@ const Repo = ({pullRequests, repo, navigateToWizard}) => {
     navigateToWizard(ownerName, repoName, prNumber);
   }
 
+  console.log(repo);
+
   return (
     <div>
       {pullRequests.map(pr => (
