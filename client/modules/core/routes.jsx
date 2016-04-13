@@ -48,10 +48,13 @@ export default function (injectDeps, {FlowRouter}) {
   });
 
   FlowRouter.route('/repo/:ownerName/:repoName/pull/:prNumber', {
-    name: 'repos',
-    action() {
+    name: 'wizard',
+    action({ownerName, repoName, prNumber}, {currentSlideNum}) {
       mount(MainLayoutCtx, {
-        content: () => (<Wizard />)
+        content: () => (<Wizard ownerName={ownerName}
+          repoName={repoName}
+          prNumber={parseInt(prNumber, 10)}
+          currentSlideNum={parseInt(currentSlideNum, 10) || 1} />)
       });
     }
   });

@@ -5,7 +5,7 @@ import Repo from '../components/repo.jsx';
 export const composer = ({context, ownerName, repoName}, onData) => {
   const {Meteor, Collections} = context();
 
-  let repo = Collections.Repos.findOne({ownerName, repoName});
+  let repo = Collections.Repos.findOne({'owner.login': ownerName, name: repoName});
 
   Meteor.call('pullRequests.getAll', ownerName, repoName, function (err, res) {
     onData(null, {pullRequests: res.pullRequests, repo});
@@ -13,7 +13,8 @@ export const composer = ({context, ownerName, repoName}, onData) => {
 };
 
 export const depsMapper = (context, actions) => ({
-  context: () => context
+  context: () => context,
+  navigateToWizard: actions.slideDecks.navigateToWizard
 });
 
 export default composeAll(

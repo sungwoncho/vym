@@ -1,14 +1,21 @@
 import React from 'react';
 
-import {pathFor} from '/client/modules/core/libs/helpers';
+const Repo = ({pullRequests, repo, navigateToWizard}) => {
 
-const Repo = ({pullRequests, repo}) => (
-  <div>
-    {pullRequests.map(pr => (
-      <a href={pathFor('wizard',
-        {ownerName: repo.owner.login, repoName: repo.name, prNumber: pr.number})}>{pr.title}</a>
-    ))}
-  </div>
-);
+  function onWizardOpen(ownerName, repoName, prNumber, e) {
+    e.preventDefault();
+    navigateToWizard(ownerName, repoName, prNumber);
+  }
+
+  return (
+    <div>
+      {pullRequests.map(pr => (
+        <a href="#" onClick={onWizardOpen.bind(this, repo.owner.login, repo.name, pr.number)}>
+          {pr.title}
+        </a>
+      ))}
+    </div>
+  );
+};
 
 export default Repo;
