@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Header from '../containers/header';
+import Footer from '../containers/footer';
 
 const Layout = ({content = () => null }) => (
   <div>
@@ -8,6 +9,7 @@ const Layout = ({content = () => null }) => (
     <div className="main">
       {content()}
     </div>
+    <Footer />
   </div>
 );
 

@@ -2,6 +2,7 @@ import React from 'react';
 
 import EnsureLoggedIn from '../containers/ensure_logged_in';
 import PullRequestList from '../containers/pull_request_list';
+import WizardLauncher from '../containers/wizard_launcher';
 
 const Repo = ({pullRequests, repo}) => {
 
@@ -23,8 +24,14 @@ const Repo = ({pullRequests, repo}) => {
             <hr />
 
             <p className="text-muted">
-              Click on a pull request to launch the wizard
+              Click on a pull request to launch the wizard.
             </p>
+
+            <p className="text-muted">
+              Or just type pull request number and press launch.
+            </p>
+
+            <WizardLauncher repo={repo} />
 
             <PullRequestList pullRequests={pullRequests}
               repo={repo} />
