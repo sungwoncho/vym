@@ -3,7 +3,7 @@ import React from 'react';
 const LoginButton = ({githubAuth, btnText = 'Set up vym', btnClass = 'btn btn-success btn-lg'}) => {
   function login(e) {
     e.preventDefault();
-    githubAuth({scopes: [ 'public_repo' ], redirectPath: 'dashboard'});
+    githubAuth({scopes: [ 'public_repo' ], redirectPath: 'repos'});
   }
 
   return (

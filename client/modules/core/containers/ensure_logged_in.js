@@ -1,19 +1,20 @@
 import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
-import {ensureGuestUser} from '/client/modules/core/libs/auth';
+import {authComposer} from 'meteor-auth';
 
-import Home from '../components/home.jsx';
+import EnsureLoggedin from '../components/ensure_logged_in.jsx';
 
 export const composer = ({context}, onData) => {
+  const {Meteor, Collections} = context();
+
   onData(null, {});
 };
 
 export const depsMapper = (context, actions) => ({
-  githubAuth: actions.users.githubAuth,
   context: () => context
 });
 
 export default composeAll(
-  composeWithTracker(ensureGuestUser),
+  composeWithTracker(authComposer),
   composeWithTracker(composer),
   useDeps(depsMapper)
-)(Home);
+)(EnsureLoggedin);

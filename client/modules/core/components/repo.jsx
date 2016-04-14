@@ -1,21 +1,36 @@
 import React from 'react';
 
-const Repo = ({pullRequests, repo, navigateToWizard}) => {
+import EnsureLoggedIn from '../containers/ensure_logged_in';
+import PullRequestList from '../containers/pull_request_list';
 
-  function onWizardOpen(ownerName, repoName, prNumber, e) {
-    e.preventDefault();
-    navigateToWizard(ownerName, repoName, prNumber);
-  }
-
-  console.log(repo);
+const Repo = ({pullRequests, repo}) => {
 
   return (
-    <div>
-      {pullRequests.map(pr => (
-        <a href="#" onClick={onWizardOpen.bind(this, repo.owner.login, repo.name, pr.number)}>
-          {pr.title}
-        </a>
-      ))}
+    <div className="container">
+      <div className="row">
+        <div className="col-xs-12">
+          <EnsureLoggedIn>
+            <h2>
+              {repo.owner.login}/{repo.name}
+              <small>
+                <a href={repo.html_url} className="ml10"><i className="fa fa-github"></i></a>
+              </small>
+            </h2>
+            <p>
+              {repo.description}
+            </p>
+
+            <hr />
+
+            <p className="text-muted">
+              Click on a pull request to launch the wizard
+            </p>
+
+            <PullRequestList pullRequests={pullRequests}
+              repo={repo} />
+          </EnsureLoggedIn>
+        </div>
+      </div>
     </div>
   );
 };

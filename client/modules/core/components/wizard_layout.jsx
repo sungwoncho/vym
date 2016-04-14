@@ -1,8 +1,8 @@
 import React from 'react';
 
-const WizardLayout = () => (
+const WizardLayout = ({content = () => null }) => (
   <div>
-    WizardLayout
+    {content()}
   </div>
 );
 

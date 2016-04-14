@@ -251,6 +251,14 @@
   margin-right: 20px;
 }
 
+.ml10 {
+  margin-left: 10px;
+}
+
+.ml20 {
+  margin-left: 20px;
+}
+
 // repo list
 
 .repo-list-container {
@@ -276,6 +284,13 @@
     margin-left: 5px;
   }
 }
+
+// pull request list
+
+.pr-item {
+  cursor: pointer;
+}
+
 
 .main {
   padding-top: 30px;

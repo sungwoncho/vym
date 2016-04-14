@@ -3,6 +3,7 @@ import classnames from 'classnames';
 
 import RepoList from './repo_list.jsx';
 import PrivateRepoToggleBtn from '../containers/private_repo_toggle_btn';
+import EnsureLoggedIn from '../containers/ensure_logged_in';
 
 import {pathFor} from '/client/modules/core/libs/helpers';
 
@@ -43,33 +44,36 @@ class Repos extends React.Component {
       <div className="container">
         <div className="row">
           <div className="col-xs-8 col-xs-offset-2">
-            <h2>Your repos</h2>
-            <small>These are the repos you have access to</small>
-            <ul className="repo-list list-unstyled">
-              <RepoList repos={repos}
-                type="normal" />
-            </ul>
+            <EnsureLoggedIn>
+              <h2>Your repos</h2>
+              <small>These are the repos you have access to</small>
+              <ul className="repo-list list-unstyled">
+                <RepoList repos={repos}
+                  type="normal" />
+              </ul>
 
-            <div className="text-xs-center">
-              <a href="#" onClick={toggleIsAdding.bind(this)} className="btn btn-md btn-secondary">
-                {
-                  this.state.isAdding ?
-                  <div>
-                    <i className="fa fa-caret-up"></i> Show less
-                  </div> :
-                  <div>
-                    <i className="fa fa-caret-down"></i> Add repo
-                  </div>
-                }
-              </a>
-            </div>
+              <div className="text-xs-center">
+                <a href="#" onClick={
+                    toggleIsAdding.bind(this)} className="btn btn-md btn-secondary">
+                  {
+                    this.state.isAdding ?
+                    <div>
+                      <i className="fa fa-caret-up"></i> Show less
+                    </div> :
+                    <div>
+                      <i className="fa fa-caret-down"></i> Add repo
+                    </div>
+                  }
+                </a>
+              </div>
 
-            <div className={classnames({'hidden-xs-up': !this.state.isAdding})}>
-              <PrivateRepoToggleBtn onSuccess={this.refreshReposToAdd.bind(this)} />
+              <div className={classnames({'hidden-xs-up': !this.state.isAdding})}>
+                <PrivateRepoToggleBtn onSuccess={this.refreshReposToAdd.bind(this)} />
 
-              <RepoList repos={reposToAdd}
-                type="add" />
-            </div>
+                <RepoList repos={reposToAdd}
+                  type="add" />
+              </div>
+            </EnsureLoggedIn>
           </div>
         </div>
 

@@ -1,19 +1,18 @@
 import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
-import {ensureGuestUser} from '/client/modules/core/libs/auth';
 
-import Home from '../components/home.jsx';
+import PullRequestList from '../components/pull_request_list.jsx';
 
 export const composer = ({context}, onData) => {
+  const {Meteor, Collections} = context();
+
   onData(null, {});
 };
 
 export const depsMapper = (context, actions) => ({
-  githubAuth: actions.users.githubAuth,
   context: () => context
 });
 
 export default composeAll(
-  composeWithTracker(ensureGuestUser),
   composeWithTracker(composer),
   useDeps(depsMapper)
-)(Home);
+)(PullRequestList);

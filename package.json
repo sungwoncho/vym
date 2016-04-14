@@ -19,6 +19,7 @@
     "github4": "^0.5.4",
     "lodash": "^4.10.0",
     "mantra-core": "^1.2.0",
+    "meteor-auth": "^0.1.1",
     "parse-diff": "https://github.com/reviewninja/parse-diff",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",

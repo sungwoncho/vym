@@ -12,21 +12,13 @@ import Repo from './containers/repo';
 
 export default function (injectDeps, {FlowRouter}) {
   const MainLayoutCtx = injectDeps(MainLayout);
+  const WizardLayoutCtx = injectDeps(WizardLayout);
 
   FlowRouter.route('/', {
     name: 'home',
     action() {
       mount(MainLayoutCtx, {
         content: () => (<Home />)
-      });
-    }
-  });
-
-  FlowRouter.route('/dashboard', {
-    name: 'dashboard',
-    action() {
-      mount(MainLayoutCtx, {
-        content: () => (<Dashboard />)
       });
     }
   });
@@ -52,7 +44,7 @@ export default function (injectDeps, {FlowRouter}) {
   FlowRouter.route('/repo/:ownerName/:repoName/pull/:prNumber', {
     name: 'wizard',
     action({ownerName, repoName, prNumber}, {currentSlideNum}) {
-      mount(WizardLayout, {
+      mount(WizardLayoutCtx, {
         content: () => (<Wizard ownerName={ownerName}
           repoName={repoName}
           prNumber={parseInt(prNumber, 10)}
