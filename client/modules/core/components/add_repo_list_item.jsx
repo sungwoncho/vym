@@ -8,6 +8,10 @@ const AddRepoListItem = ({repo, activateRepo}) => {
     activateRepo(repo);
   }
 
+  function getRepoUrl(repo) {
+    return `https://github.com/${repo.owner.login}/${repo.name}`;
+  }
+
   return (
     <li className="repo-item">
       <div className="pull-xs-left">
@@ -24,9 +28,9 @@ const AddRepoListItem = ({repo, activateRepo}) => {
       </div>
       <div className="pull-xs-right">
         <a href="#" onClick={onActivate.bind(this)} className="btn btn-sm btn-secondary">
-          Activate
+          <i className="fa fa-check"></i> Activate
         </a>
-        <a href="#" className="btn btn-sm btn-secondary">
+        <a href={getRepoUrl(repo)} target="_blank" className="btn btn-sm btn-secondary">
           <i className="fa fa-github"></i> Repo
         </a>
       </div>
