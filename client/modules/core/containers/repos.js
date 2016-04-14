@@ -5,14 +5,23 @@ import Repos from '../components/repos.jsx';
 export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
 
-  Meteor.call('repos.getAll', function (err, res) {
-    onData(null, {repos: res.repos});
-  });
+  let reposToAdd = Collections.ReposToAdd.find({activated: false}).fetch();
+
+  if (Meteor.subscribe('adminRepos').ready()) {
+    let repos = Collections.Repos.find({adminId: this.userId});
+
+    onData(null, {
+      repos,
+      reposToAdd
+    });
+  }
 };
 
 export const depsMapper = (context, actions) => ({
+  context: () => context,
   activateRepo: actions.repos.activateRepo,
-  context: () => context
+  getReposToAdd: actions.repos.getReposToAdd,
+  clearReposToAdd: actions.repos.clearReposToAdd
 });
 
 export default composeAll(

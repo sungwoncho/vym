@@ -9,4 +9,23 @@ export default function () {
 
     return Repos.find({'owner.login': ownerName, name: repoName});
   });
+
+  Meteor.publish('collaboratingRepos', function () {
+    if (!this.userId) {
+      this.ready();
+      return;
+    }
+
+    return Repos.find({'vym.collaboratorIds': this.userId});
+  });
+
+
+  Meteor.publish('adminRepos', function () {
+    if (!this.userId) {
+      this.ready();
+      return;
+    }
+
+    return Repos.find({adminIds: this.userId});
+  });
 }

@@ -250,3 +250,33 @@
 .mr20 {
   margin-right: 20px;
 }
+
+// repo list
+
+.repo-list-container {
+  margin-top: 20px;
+}
+
+.repo-item {
+  background-color: #F1F1F1;
+  padding: 0.8em;
+  margin-bottom: 10px;
+  overflow: auto;
+
+  &:hover {
+    background-color: #FDFDFD;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  .repo-name {
+    display: inline-block;
+    margin-left: 5px;
+  }
+}
+
+.main {
+  padding-top: 30px;
+}

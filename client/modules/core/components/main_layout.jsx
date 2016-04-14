@@ -5,7 +5,7 @@ import Header from '../containers/header';
 const Layout = ({content = () => null }) => (
   <div>
     <Header />
-    <div>
+    <div className="main">
       {content()}
     </div>
   </div>

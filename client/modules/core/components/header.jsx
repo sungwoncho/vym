@@ -7,7 +7,7 @@ const Header = ({currentUser}) => (
 
   <nav className="navbar navbar-light bg-faded">
 
-    <a className="navbar-brand" href="#">
+    <a className="navbar-brand" href="/">
       Vym
     </a>
 
