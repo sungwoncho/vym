@@ -2,6 +2,8 @@ import React from 'react';
 import {mount} from 'react-mounter';
 
 import MainLayout from './components/main_layout.jsx';
+import WizardLayout from './components/wizard_layout.jsx';
+
 import Home from './containers/home';
 import Dashboard from './containers/dashboard';
 import Wizard from './containers/wizard';
@@ -50,7 +52,7 @@ export default function (injectDeps, {FlowRouter}) {
   FlowRouter.route('/repo/:ownerName/:repoName/pull/:prNumber', {
     name: 'wizard',
     action({ownerName, repoName, prNumber}, {currentSlideNum}) {
-      mount(MainLayoutCtx, {
+      mount(WizardLayout, {
         content: () => (<Wizard ownerName={ownerName}
           repoName={repoName}
           prNumber={parseInt(prNumber, 10)}

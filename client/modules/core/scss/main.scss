@@ -199,9 +199,54 @@
   }
 }
 
+// home
+
+.hero {
+  padding: 4em 0;
+  text-align: center;
+
+  .heading {
+    font-size: 2.6em;
+    margin-bottom: 16px;
+  }
+
+  .sub-heading {
+    color: #696969;
+    font-size: 27px;
+  }
+}
+
+.features {
+
+  .feature {
+    text-align: center;
+  }
+}
+
+// header
+
+.avatar {
+  width: 36px;
+  border-radius: 50%;
+}
+
 
 // global
 
 .hidden {
   display: none;
+}
+
+.btn {
+  .fa {
+    margin-right: 10px;
+  }
+}
+
+.mr10 {
+  margin-right: 10px;
+}
+
+.mr20 {
+  margin-right: 20px;
 }
