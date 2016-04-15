@@ -29,9 +29,17 @@ const RepoItem = ({repo}) => (
       className="repo-item-link">
       <div>
         <span className="octicon octicon-repo"></span>
-        <div className="repo-name">
+        <div className="repo-name mr10">
           {repo.owner.login}/{repo.name}
         </div>
+        {
+          repo.private ? <span className="label label-warning mr10">private</span> :
+          <span></span>
+        }
+        {
+          repo.fork ? <span className="label label-default mr10">fork</span> :
+          <span></span>
+        }
       </div>
     </a>
   </li>

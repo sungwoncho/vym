@@ -57,5 +57,9 @@ export default {
       let newScopes = _.without(oldScopes, scopeToRemove);
       githubAuth({Meteor, FlowRouter}, {scopes: newScopes, redirectPath}, done);
     });
+  },
+
+  createOrUpdateSubscription({Meteor}, token, done) {
+    Meteor.call('users.createOrUpdateSubscription', token, done);
   }
 };

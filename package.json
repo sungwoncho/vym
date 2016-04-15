@@ -27,6 +27,7 @@
     "react-mounter": "^1.0.0",
     "react-simple-di": "^1.0.1",
     "shortid": "^2.2.6",
-    "sortablejs": "^1.4.2"
+    "sortablejs": "^1.4.2",
+    "stripe": "^4.5.0"
   }
 }
