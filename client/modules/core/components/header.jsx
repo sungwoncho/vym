@@ -16,7 +16,7 @@ const Header = ({currentUser}) => (
         <a className="nav-link" target="_blank" href="http://blog.vym.io">Blog</a>
       </li>
       <li className="nav-item">
-        <a className="nav-link" target="_blank" href="https://github.com/vymio/vym">Open Source</a>
+        <a className="nav-link" target="_blank" href="https://github.com/vymio">Open Source</a>
       </li>
     </ul>
 
