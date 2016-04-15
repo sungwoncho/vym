@@ -1,4 +1,6 @@
 import React from 'react';
+
+import PricingSection from './pricing_section.jsx';
 import LoginButton from '../containers/login_button';
 
 const Home = ({githubAuth}) => {
@@ -11,7 +13,7 @@ const Home = ({githubAuth}) => {
   return (
     <div>
       <div className="hero">
-        <h2 className="heading">Make your GitHub PR readable</h2>
+        <h2 className="heading">Slide deck for your GitHub PR</h2>
         <p className="sub-heading">"I want to organize those files in my pull requests"</p>
         <a href="#" className="btn btn-lg btn-warning mr20">
           <i className="fa fa-chrome"></i>
@@ -34,7 +36,7 @@ const Home = ({githubAuth}) => {
               <div className="col-xs-12 col-sm-4 feature">
                 <h3>Your code is secure</h3>
                 <p>
-                  Vym never saves your code anywhere. Vym is fully open source for
+                  Vym never saves your code anywhere. Vym is open source for
                   full transparency.
                 </p>
               </div>
@@ -49,6 +51,8 @@ const Home = ({githubAuth}) => {
           </div>
         </div>
       </div>
+
+      <PricingSection />
     </div>
   );
 };

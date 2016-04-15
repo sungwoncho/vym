@@ -259,6 +259,14 @@
   margin-left: 20px;
 }
 
+.mt20 {
+  margin-top: 20px;
+}
+
+.mt10 {
+  margin-top: 10px;
+}
+
 // repo list
 
 .repo-list-container {
@@ -308,4 +316,55 @@
 
 .main {
   padding-top: 30px;
+}
+
+
+// Pricing
+
+.pricing {
+  .pricing-title {
+    margin-bottom: 20px;
+  }
+
+  .bulk-inquiry {
+    padding-top: 2em;
+    color: #717171;
+  }
+
+  .plan {
+    text-align: center;
+    border: 2px solid #ABABAB;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    border-radius: 5px;
+
+    .plan-name {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+    }
+
+    .price, .frequency {
+      display: inline-block;
+      margin-bottom: 30px;
+    }
+
+    .price {
+      font-size: 2em;
+    }
+
+    .frequency {
+      margin-left: 11px;
+    }
+
+    .quantity {
+      font-weight: 600;
+      color: #000;
+    }
+
+    .offer {
+      color: #717171;
+      font-weight: 500;
+    }
+  }
 }

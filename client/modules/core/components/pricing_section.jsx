@@ -1,0 +1,54 @@
+import React from 'react';
+
+import LoginButton from '../containers/login_button';
+
+
+const Pricing = () => (
+  <div className="container-fluid">
+    <div className="row pricing section">
+      <div className="col-xs-12 text-xs-center pricing-title">
+        <h2>Simple Pricing</h2>
+      </div>
+
+      <div className="col-xs-12 col-sm-6 col-sm-offset-3">
+        <div className="row">
+          <div className="col-xs-12 col-sm-6">
+            <div className="plan">
+              <div className="plan-name">Open source</div>
+              <div className="price">Free</div>
+              <ul className="offer list-unstyled">
+                <li>
+                  <span className="quantity">Unlimited</span> slide decks
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="col-xs-12 col-sm-6">
+            <div className="plan">
+              <div className="plan-name">Private Repo</div>
+              <div className="price">$12</div>
+              <div className="frequency">/ month</div>
+              <ul className="offer list-unstyled">
+                <li></li>
+                <span className="quantity">Unlimited</span> slide decks
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="col-xs-12 text-xs-center mt20">
+        <LoginButton btnText="Try Vym" />
+      </div>
+
+      <div className="col-xs-12 text-xs-center">
+        <p className="bulk-inquiry">
+          Email <a href="mailto:hey@vym.io">hey@vym.io</a> for bulk pricing for
+          your GitHub organization.
+        </p>
+      </div>
+    </div>
+  </div>
+);
+
+export default Pricing;
