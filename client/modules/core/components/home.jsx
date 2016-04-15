@@ -15,7 +15,8 @@ const Home = ({githubAuth}) => {
       <div className="hero">
         <h2 className="heading">Slide deck for your GitHub PR</h2>
         <p className="sub-heading">"I want to organize those files in my pull requests"</p>
-        <a href="#" className="btn btn-lg btn-warning mr20">
+        <a href="https://chrome.google.com/webstore/detail/vym/akeeilhkpoeckiggjocaglcjedfoifca"
+          target="_blank" className="btn btn-lg btn-warning mr20">
           <i className="fa fa-chrome"></i>
           Add Chrome Extension
         </a>
