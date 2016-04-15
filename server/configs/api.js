@@ -3,7 +3,7 @@ import {SlideDecks} from '/lib/collections';
 
 export function configureAPI() {
   Picker.route('/api/v1/slide_decks/:ownerName/:repoName/:prNumber', function (params, req, res) {
-    var slideDeck = SlideDecks.findOne({
+    let slideDeck = SlideDecks.findOne({
       ownerName: params.ownerName,
       repoName: params.repoName,
       prNumber: parseInt(params.prNumber, 10)
