@@ -6,6 +6,7 @@ export default function () {
     return Meteor.users.find(this.userId, {
       fields: {
         'services.github.username': 1,
+        vymToken: 1,
         scopes: 1
       }
     });
