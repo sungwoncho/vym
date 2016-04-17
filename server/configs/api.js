@@ -1,21 +1,32 @@
 import {Picker} from 'meteor/meteorhacks:picker';
 import {Meteor} from 'meteor/meteor';
-import {SlideDecks} from '/lib/collections';
+import {SlideDecks, Repos} from '/lib/collections';
 import request from 'request';
 import hat from 'hat';
 import GithubAPI from 'github4';
 import Promise from 'bluebird';
+import _ from 'lodash';
 
 export function configureAPI() {
   Picker.route('/api/v1/slide_decks/:ownerName/:repoName/:prNumber', function (params, req, res) {
-    let slideDeck = SlideDecks.findOne({
-      ownerName: params.ownerName,
-      repoName: params.repoName,
-      prNumber: parseInt(params.prNumber, 10)
-    });
+    let vymToken = params.query.vymToken;
 
-    let response = JSON.stringify(slideDeck);
-    res.end(response);
+    let repo = Repos.findOne({'owner.login': params.ownerName, name: params.repoName});
+    let user = Meteor.users.findOne({vymToken});
+
+    if (_.includes(repo.collaboratorIds, user._id)) {
+      let slideDeck = SlideDecks.findOne({
+        ownerName: params.ownerName,
+        repoName: params.repoName,
+        prNumber: parseInt(params.prNumber, 10)
+      });
+
+      let response = JSON.stringify(slideDeck);
+      res.end(response);
+    } else {
+      res.statusCode = 403;
+      res.end();
+    }
   });
 
   Picker.route('/api/v1/auth/github', function (params, req, res) {
