@@ -21,7 +21,7 @@ export function configureAPI() {
         prNumber: parseInt(params.prNumber, 10)
       });
 
-      let response = JSON.stringify(slideDeck);
+      let response = JSON.stringify({slideDeck});
       res.end(response);
     } else {
       res.statusCode = 403;
@@ -122,5 +122,22 @@ export function configureAPI() {
 
       })
     );
+  });
+
+  /**
+   * Checks if an activated repo exists
+   */
+  Picker.route('/api/v1/repo/:ownerName/:repoName', function (params, req, res) {
+    let repo = Repos.findOne({
+      'owner.login': params.ownerName,
+      name: params.repoName,
+    });
+
+    let response = {
+      activated: Boolean(repo)
+    };
+
+    res.write(JSON.stringify(response));
+    res.end();
   });
 }
