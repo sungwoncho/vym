@@ -1,6 +1,7 @@
 import React from 'react';
 
 import LoginButton from '../containers/login_button';
+import AddExtensionBtn from './add_extension_btn.jsx';
 
 
 const Pricing = () => (
@@ -35,10 +36,6 @@ const Pricing = () => (
             </div>
           </div>
         </div>
-      </div>
-
-      <div className="col-xs-12 text-xs-center mt20">
-        <LoginButton btnText="Try Vym" />
       </div>
 
       <div className="col-xs-12 text-xs-center">
