@@ -36,17 +36,7 @@ const Home = ({githubAuth}) => {
           <div className="col-xs-8 col-xs-offset-2">
             <div className="row">
 
-              <div className="col-xs-12 feature">
-                <div className="feature-icon">
-                  <i className="fa fa-github"></i>
-                </div>
-
-                <h3>Just works on GitHub</h3>
-                <p>
-                  Simply turn on the Chrome extension and there will be a
-                  'Slide deck' tab for all pull requests.
-                </p>
-              </div>
+              <h2 className="text-xs-center mb50">Why should I care?</h2>
 
               <div className="col-xs-12 feature">
                 <div className="feature-icon">
@@ -62,12 +52,35 @@ const Home = ({githubAuth}) => {
 
               <div className="col-xs-12 feature">
                 <div className="feature-icon">
+                  <i className="fa fa-bug"></i>
+                </div>
+
+                <h3>Prevent bugs</h3>
+                <p>
+                  Better code review results in less bug and technical debt.
+                </p>
+              </div>
+
+              <div className="col-xs-12 feature">
+                <div className="feature-icon">
+                  <i className="fa fa-github"></i>
+                </div>
+
+                <h3>Just works on GitHub</h3>
+                <p>
+                  Simply turn on the Chrome extension and slide decks are there
+                  on GitHub.
+                </p>
+              </div>
+
+              <div className="col-xs-12 feature">
+                <div className="feature-icon">
                   <i className="fa fa-lock"></i>
                 </div>
 
                 <h3>Your code is secure</h3>
                 <p>
-                  Vym never saves your code anywhere. Everything is open source
+                  Vym never touches or saves your code. Everything is open source
                   for full transparency.
                 </p>
               </div>

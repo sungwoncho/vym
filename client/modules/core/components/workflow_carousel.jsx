@@ -31,6 +31,7 @@ class WorkflowCarousel extends React.Component {
   render() {
     let settings = {
       dots: false,
+      draggable: false,
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
