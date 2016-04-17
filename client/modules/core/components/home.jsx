@@ -21,16 +21,19 @@ const Home = ({githubAuth}) => {
       </div>
 
       <div className="container">
-        <div className="demo row">
-          <div className="col-xs-12">
+        <div className="demo home-section row">
+          <div className="col-xs-12 demo-content">
             <Safari>
               <img src="/images/demo-1.png" />
             </Safari>
+            <h4>Vym adds a slide deck tab to GitHub PRs.</h4>
           </div>
         </div>
+      </div>
 
+      <div className="container-fluid features-container">
         <div className="features row">
-          <div className="col-xs-10 col-xs-offset-1">
+          <div className="col-xs-8 col-xs-offset-2">
             <div className="row">
 
               <div className="col-xs-12 feature">
@@ -47,10 +50,10 @@ const Home = ({githubAuth}) => {
 
               <div className="col-xs-12 feature">
                 <div className="feature-icon">
-                  <i className="fa fa-th-large"></i>
+                  <i className="fa fa-clock-o"></i>
                 </div>
 
-                <h3>Turn it into slide deck</h3>
+                <h3>Quicker, better review</h3>
                 <p>
                   Slide deck is better than a wall of text.
                   It is easier to understand and quicker to review.
@@ -64,23 +67,27 @@ const Home = ({githubAuth}) => {
 
                 <h3>Your code is secure</h3>
                 <p>
-                  Vym never saves your code anywhere. Vym is open source for
-                  full transparency.
+                  Vym never saves your code anywhere. Everything is open source
+                  for full transparency.
                 </p>
               </div>
 
             </div>
           </div>
+        </div>
+      </div>
 
-          <div className="demo workflow row">
-            <div className="col-xs-12">
-              <h2>How does it work?</h2>
+      <div className="container">
+        <div className="workflow home-section row">
+          <div className="col-xs-12">
+            <h2>
+              Submit a pull request, make a slide deck,<br/>
+              get it reviewed using Vym.
+            </h2>
 
-              <WorkflowCarousel />
-            </div>
+            <WorkflowCarousel />
           </div>
         </div>
-
       </div>
 
       <PricingSection />

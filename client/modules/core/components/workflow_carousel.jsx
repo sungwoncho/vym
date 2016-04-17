@@ -20,7 +20,7 @@ class WorkflowCarousel extends React.Component {
 
     setInterval(() => {
       this.setState({slickGoTo: getNextSlideIndex()});
-    }, 4000);
+    }, 6500);
   }
 
   goToSlide(slideIndex, e) {
@@ -49,17 +49,17 @@ class WorkflowCarousel extends React.Component {
         <Slider {...settings}>
           <div>
             <Safari>
-              <img src="/images/demo-3.png" />
+              <img className="demo-img" src="/images/demo-3.png" />
             </Safari>
           </div>
           <div>
             <Safari>
-              <img src="/images/demo-2.png" />
+              <img className="demo-img" src="/images/demo-2.png" />
             </Safari>
           </div>
           <div>
             <Safari>
-              <img src="/images/demo-1.png" />
+              <img className="demo-img" src="/images/demo-1.png" />
             </Safari>
           </div>
         </Slider>
@@ -71,14 +71,14 @@ class WorkflowCarousel extends React.Component {
                 type="button"
                 className={getStepKlass(0)}
                 onClick={this.goToSlide.bind(this, 0)}>1</a>
-              <p>Open PR</p>
+              <p>Submit a PR</p>
             </div>
             <div className="stepwizard-step">
               <a href="#step-2"
                 type="button"
                 className={getStepKlass(1)}
                 onClick={this.goToSlide.bind(this, 1)}>2</a>
-              <p>Create Slides</p>
+              <p>Create a slide deck</p>
             </div>
             <div className="stepwizard-step">
               <a href="#step-3"
@@ -90,7 +90,7 @@ class WorkflowCarousel extends React.Component {
           </div>
         </div>
 
-        <div>
+        <div className="commentary">
           {
             this.state.slickGoTo === 0 ?
             <p>Yay, new feature! Open a pull request for review.</p> : this.state.slickGoTo === 1 ?

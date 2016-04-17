@@ -12,7 +12,7 @@ const AddExtensionBtn = () => {
     <div>
       <a onClick={installChromeExtension}
         href="#"
-        className="btn btn-lg btn-info">
+        className="btn btn-lg btn-info br0">
         <i className="fa fa-github"></i>
         Add Vym To Github
       </a>

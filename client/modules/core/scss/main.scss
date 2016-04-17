@@ -1,3 +1,10 @@
+html {
+  body {
+    font-family: 'Lato', sans-serif;
+    color: #646464;
+  }  
+}
+
 // dift-table
 .file-header {
   background-color: #efefef;
@@ -202,7 +209,7 @@
 // home
 
 .hero {
-  padding: 4em 0;
+  padding: 9em 0 7em;
   text-align: center;
 
   .heading {
@@ -212,7 +219,7 @@
 
   .sub-heading {
     color: #696969;
-    font-size: 27px;
+    font-size: 26px;
   }
 }
 
@@ -220,6 +227,13 @@
   font-size: 13px;
   color: #A5A5A5;
   margin-top: 5px;
+}
+
+.features-container {
+  background-color: #6C9EAD;
+  padding-top: 5em;
+  padding-bottom: 5em;
+  color: white;
 }
 
 .features {
@@ -238,25 +252,66 @@
         font-size: 70px;
       }
     }
+
+    p {
+      font-size: 20px;
+    }
   }
 }
 
-.demo {
+.home-section {
+  padding-top: 5em;
+  padding-bottom: 10em;
   text-align: center;
-  // padding-top: 5em;
-  padding-bottom: 5em;
+}
+
+.demo {
+  // text-align: center;
 
   img {
     width: 900px;
   }
+
+  // .demo-content:before {
+  //   position: absolute;
+  //   top: 0.9em;
+  //   right: 0;
+  //   bottom: 0;
+  //   left: 30%;
+  //   border-top: 1px solid #888888;
+  //   content: '';
+  //   height: 0px;
+  //   width: 40%;
+  //   z-index: -1;
+  // }
+
+  h4 {
+    font-size: 21px;
+    font-weight: 300;
+    // line-height: 1.8;
+    background: #fff;
+    display: inline-block;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 40px;
+  }
 }
 
 .workflow {
-  padding-top: 2em;
-  padding-bottom: 2em;
-
   h2 {
     margin-bottom: 40px;
+    font-weight: 300;
+    font-size: 2.4em;
+    line-height: 46px;
+  }
+
+  .demo-img {
+    width: 600px;
+  }
+
+  .commentary {
+    font-size: 18px;
+    padding-top: 34px;
   }
 }
 
@@ -305,6 +360,10 @@
 
 .mt10 {
   margin-top: 10px;
+}
+
+.br0{
+  border-radius: 0 !important;
 }
 
 // repo list
@@ -362,6 +421,8 @@
 // Pricing
 
 .pricing {
+  padding-bottom: 4em;
+
   .pricing-title {
     margin-bottom: 20px;
   }
@@ -547,6 +608,7 @@
   display: table-cell;
   text-align: center;
   position: relative;
+  width: 220px;
 
   p {
     margin-top: 10px;
