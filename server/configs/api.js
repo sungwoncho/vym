@@ -62,9 +62,10 @@ export function configureAPI() {
         let githubToken = body.access_token;
         let vymToken = hat();
 
-        // If duplicate exists, return
+        // Check for a duplicate user
         if (Meteor.users.findOne({'services.github.accessToken': githubToken})) {
-          return;
+          res.writeHead(301, {Location: 'https://github.com'});
+          res.end();
         }
 
         let github = new GithubAPI({version: '3.0.0'});
@@ -130,7 +131,7 @@ export function configureAPI() {
    * Syncs repository access with GitHub
    */
   Picker.route('/api/v1/user/sync_access', function (params, req, res) {
-    let user = Meteor.users.findOne({vymToken:  params.query.vymToken});
+    let user = Meteor.users.findOne({vymToken: params.query.vymToken});
 
     if (user) {
       res.end();
@@ -139,6 +140,5 @@ export function configureAPI() {
       res.statusCode = 403;
       res.end();
     }
-
-  })
+  });
 }

@@ -92,8 +92,6 @@ export default function () {
         $pull: {collaboratorIds: userId, adminIds: userId}
       },
       {multi: true});
-
-      console.log('done');
     }
 
   });
