@@ -4,7 +4,6 @@ import {SlideDecks, Repos} from '/lib/collections';
 import request from 'request';
 import hat from 'hat';
 import GithubAPI from 'github4';
-import Promise from 'bluebird';
 import _ from 'lodash';
 
 export function configureAPI() {
@@ -60,14 +59,14 @@ export function configureAPI() {
 
 
         let githubToken = body.access_token;
-        let vymToken = hat();
+        let duplicateUser = Meteor.users.findOne({'services.github.accessToken': githubToken});
 
-        // Check for a duplicate user
-        if (Meteor.users.findOne({'services.github.accessToken': githubToken})) {
-          res.writeHead(301, {Location: 'https://github.com'});
+        if (duplicateUser) {
+          res.writeHead(301, {Location: `https://github.com?vymToken=${duplicateUser.vymToken}`});
           res.end();
         }
 
+        let vymToken = hat();
         let github = new GithubAPI({version: '3.0.0'});
         github.authenticate({
           type: 'oauth',
