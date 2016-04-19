@@ -57,17 +57,10 @@ export function configureAPI() {
           return console.log(err);
         }
 
-
         let githubToken = body.access_token;
-        let duplicateUser = Meteor.users.findOne({'services.github.accessToken': githubToken});
-
-        if (duplicateUser) {
-          res.writeHead(301, {Location: `https://github.com?vymToken=${duplicateUser.vymToken}`});
-          res.end();
-        }
-
         let vymToken = hat();
         let github = new GithubAPI({version: '3.0.0'});
+
         github.authenticate({
           type: 'oauth',
           token: githubToken
@@ -98,7 +91,7 @@ export function configureAPI() {
               vymToken
             };
 
-            Meteor.users.insert(userDoc);
+            Meteor.users.upsert({'services.github.id': userData.id}, {$set: userDoc});
 
             res.writeHead(301, {Location: `https://github.com?vymToken=${vymToken}`});
             res.end();
