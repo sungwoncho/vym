@@ -1,5 +1,7 @@
 # Vym
 
+[![Vym](https://img.shields.io/badge/Reviewing%20with-Vym-blue.svg)](https://vym.io)
+
 This is the codebase that powers [vym.io](https://vym.io), a service that helps
 you organize files in pull requests using slide decks.
 
