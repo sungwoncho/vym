@@ -80,8 +80,8 @@ const Home = ({githubAuth}) => {
 
                 <h3>Your code is secure</h3>
                 <p>
-                  Vym never touches or saves your code. Everything is open source
-                  for full transparency.
+                  Vym never saves your code. Everything is open source for
+                  full transparency.
                 </p>
               </div>
 
