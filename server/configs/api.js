@@ -13,7 +13,7 @@ export function configureAPI() {
     let repo = Repos.findOne({'owner.login': params.ownerName, name: params.repoName});
     let user = Meteor.users.findOne({vymToken});
 
-    if (_.includes(repo.collaboratorIds, user._id)) {
+    if (_.includes(repo.collaboratorIds, user._id) || repo.isDemo()) {
       let slideDeck = SlideDecks.findOne({
         ownerName: params.ownerName,
         repoName: params.repoName,
