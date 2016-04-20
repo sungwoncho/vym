@@ -2,16 +2,19 @@
   "githubClientSecret": "85f0b83fc6674c9d5a1fc3cecdc02284905648ec",
   "githubWebhookSecret": "mockGithubWebhookSecret",
   "stripeSecretKey": "sk_test_tSFIdmW5VsmSvT0iXFwCsemm",
-  "intercom": {
-    "id": "mockIntercomId",
-    "allowAnonymous": true
-  },
   "public": {
     "githubClientId": "18e0532390c89ccea8e4",
     "githubWebhookPayloadUrl": "http://127.0.0.1:3000/webhook",
     "analyticsSettings": {
       "Google Analytics" : {"trackingId": "dummyTrackingId"}
     },
-    "stripePublishableKey": "pk_test_Ys38Pf36wFAhcI2wKRqY2I4c"
+    "stripePublishableKey": "pk_test_Ys38Pf36wFAhcI2wKRqY2I4c",
+    "intercom": {
+      "id": "a2hd0i0c",
+      "allowAnonymous": true
+    }
+  },
+  "intercom": {
+    "apiKey": "notNeeded"
   }
 }
