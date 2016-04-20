@@ -1,6 +1,7 @@
 import stripeAPI from 'stripe';
 import {Meteor} from 'meteor/meteor';
 import {check} from 'meteor/check';
+import {Repos} from '/lib/collections';
 
 export default function () {
   Meteor.methods({
@@ -55,6 +56,42 @@ export default function () {
       if (done) {
         done();
       }
+    },
+
+    'users.syncAccessWithGithub'(targetUserId) {
+      this.unblock();
+      console.log('syncing access with GitHub for', targetUserId);
+
+      let allRepoIds = [];
+      let userId = targetUserId || this.userId;
+
+      let repos = Meteor.call('repos.getAll', userId);
+
+      repos.forEach(function (repo) {
+        allRepoIds = allRepoIds.concat(repo.id);
+
+        let modifier = {
+          $addToSet: {collaboratorIds: userId}
+        };
+
+        if (repo.permissions.admin) {
+          modifier.$addToSet.adminIds = userId;
+        }
+
+        Repos.update({id: repo.id}, modifier);
+      });
+
+      // Deny access to all repos that the user no longer has access to
+      Repos.update({
+        id: {$nin: allRepoIds},
+        $or: [
+          {collaboratorIds: userId},
+          {adminIds: userId}
+        ]
+      }, {
+        $pull: {collaboratorIds: userId, adminIds: userId}
+      },
+      {multi: true});
     }
 
   });

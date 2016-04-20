@@ -18,8 +18,11 @@ const Pricing = () => (
               <div className="plan-name">Open source</div>
               <div className="price">Free</div>
               <ul className="offer list-unstyled">
-                <li>
+                <li className="offer-item">
                   <span className="quantity">Unlimited</span> slide decks
+                </li>
+                <li className="offer-item">
+                  <span className="quantity">Unlimited</span> users
                 </li>
               </ul>
             </div>
@@ -30,8 +33,12 @@ const Pricing = () => (
               <div className="price">$12</div>
               <div className="frequency">/ month</div>
               <ul className="offer list-unstyled">
-                <li></li>
-                <span className="quantity">Unlimited</span> slide decks
+                <li className="offer-item">
+                  <span className="quantity">Unlimited</span> slide decks
+                </li>
+                <li className="offer-item">
+                  <span className="quantity">Unlimited</span> users
+                </li>
               </ul>
             </div>
           </div>
