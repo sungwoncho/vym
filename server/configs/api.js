@@ -4,7 +4,6 @@ import {SlideDecks, Repos} from '/lib/collections';
 import request from 'request';
 import hat from 'hat';
 import GithubAPI from 'github4';
-import Promise from 'bluebird';
 import _ from 'lodash';
 
 export function configureAPI() {
@@ -21,7 +20,7 @@ export function configureAPI() {
         prNumber: parseInt(params.prNumber, 10)
       });
 
-      let response = JSON.stringify(slideDeck);
+      let response = JSON.stringify({slideDeck});
       res.end(response);
     } else {
       res.statusCode = 403;
@@ -45,7 +44,6 @@ export function configureAPI() {
   });
 
   Picker.route('/api/v1/auth/github/callback', function (params, req, res) {
-    console.log('code', params.query.code);
     let reqBody = {
       client_id: Meteor.settings.public.githubClientId,
       client_secret: Meteor.settings.githubClientSecret,
@@ -59,68 +57,80 @@ export function configureAPI() {
           return console.log(err);
         }
 
-
         let githubToken = body.access_token;
         let vymToken = hat();
+        let github = new GithubAPI({version: '3.0.0'});
 
-        (async function () {
-          let github = new GithubAPI({version: '3.0.0'});
-          github.authenticate({
-            type: 'oauth',
-            token: githubToken
-          });
+        github.authenticate({
+          type: 'oauth',
+          token: githubToken
+        });
 
-          function getUserData() {
-            return new Promise(function (resolve, reject) {
-              github.users.get({}, function (err, res) {
-                if (err) {
-                  reject(err);
-                } else {
-                  resolve(res)
-                }
-              });
-            });
+        github.users.get({}, Meteor.bindEnvironment(function (err1, userData) {
+          if (err1) {
+            return console.log(err1);
           }
 
-          function getUserEmails() {
-            return new Promise(function (resolve, reject) {
-              github.users.getEmails({}, function (err, res) {
-                if (err) {
-                  reject(err);
-                } else {
-                  resolve(res)
+          github.users.getEmails({}, Meteor.bindEnvironment(function (err2, emails) {
+            if (err2) {
+              return console.log(err2);
+            }
+
+            let userDoc = {
+              services: {
+                github: {
+                  id: userData.id,
+                  accessToken: githubToken,
+                  username: userData.login,
+                  emails
                 }
-              });
-            });
-          }
+              },
+              profile: {
+                name: userData.name
+              },
+              vymToken
+            };
 
-          let userData = await getUserData();
-          let emails = await getUserEmails();
+            Meteor.users.upsert({'services.github.id': userData.id}, {$set: userDoc});
 
-          let userDoc = {
-            services: {
-              github: {
-                id: userData.id,
-                accessToken: githubToken,
-                username: userData.login,
-                emails
-              }
-            },
-            profile: {
-              name: userData.name
-            },
-            vymToken
-          };
-
-          Meteor.users.upsert({'services.github.accessToken': githubToken}, {
-            $set: userDoc
-          });
-
-          res.writeHead(301, {Location: `https://github.com?vymToken=${vymToken}`});
-          res.end();
-        }());
+            res.writeHead(301, {Location: `https://github.com?vymToken=${vymToken}`});
+            res.end();
+          }));
+        }));
 
       })
     );
+  });
+
+  /**
+   * Checks if an activated repo exists
+   */
+  Picker.route('/api/v1/repo/:ownerName/:repoName', function (params, req, res) {
+    let repo = Repos.findOne({
+      'owner.login': params.ownerName,
+      name: params.repoName,
+    });
+
+    let response = {
+      activated: Boolean(repo)
+    };
+
+    res.write(JSON.stringify(response));
+    res.end();
+  });
+
+  /**
+   * Syncs repository access with GitHub
+   */
+  Picker.route('/api/v1/user/sync_access', function (params, req, res) {
+    let user = Meteor.users.findOne({vymToken: params.query.vymToken});
+
+    if (user) {
+      res.end();
+      Meteor.call('users.syncAccessWithGithub', user._id);
+    } else {
+      res.statusCode = 403;
+      res.end();
+    }
   });
 }

@@ -18,12 +18,12 @@ export default function () {
      * @return {Object[]} repoInfo.repos
      * @return {Number} repoInfo.nextPage
      */
-    'repos.getAll'() {
-      let user = Meteor.users.findOne(this.userId);
+    'repos.getAll'(userId) {
+      let user = Meteor.users.findOne(userId || this.userId);
 
       let activatedRepoIds = Repos.find({$or: [
-        {adminIds: this.userId},
-        {collaboratorIds: this.userId}
+        {adminIds: user._id},
+        {collaboratorIds: user._id}
       ]}).map(function (repo) {
         return repo.id;
       });
