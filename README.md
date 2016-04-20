@@ -10,9 +10,8 @@ for Meteor.
 
 This repository is rocking Vym. All its pull requests have a slide deck section.
 
-Let's have a look at the slide deck in action. Go to [pull request  #1]
-(https://github.com/vymio/vym/pull/1) to see an example. Make sure you have
-Vym Chrome extension on.
+Please go to [pull request  #1](https://github.com/vymio/vym/pull/1) to see an
+example. Make sure you have Vym Chrome extension on.
 
 
 ## LICENSE
