@@ -6,12 +6,6 @@ import Safari from './safari.jsx';
 import WorkflowCarousel from './workflow_carousel.jsx';
 
 const Home = ({githubAuth}) => {
-  function onLogin(e) {
-    e.preventDefault();
-
-    githubAuth({scopes: [ 'public_repo' ], redirectPath: 'dashboard'});
-  }
-
   return (
     <div>
       <div className="hero">
