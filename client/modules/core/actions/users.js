@@ -22,7 +22,19 @@ function githubAuth({Meteor, FlowRouter}, {scopes, redirectPath}, done) {
 
 export default {
   githubAuth({Meteor, FlowRouter}, {scopes, redirectPath}) {
-    githubAuth({Meteor, FlowRouter}, {scopes, redirectPath})
+    githubAuth({Meteor, FlowRouter}, {scopes, redirectPath});
+  },
+
+  githubAuthRedirect({Meteor}, {scopes}) {
+    Meteor.loginWithGithub({
+      requestPermissions: scopes,
+      loginStyle: 'redirect',
+      redirectUrl: Meteor.absoluteUrl('repos')
+    });
+  },
+
+  redirectToRepos({FlowRouter}) {
+    FlowRouter.go('repos');
   },
 
   logout({Meteor, FlowRouter}) {

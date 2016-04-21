@@ -4,9 +4,11 @@
 export function ensureGuestUser({context}, onData) {
   const {Meteor, FlowRouter} = context();
 
-  if (Meteor.user()) {
-    FlowRouter.go('repos');
-  }
+  if (Meteor.subscribe('currentUser').ready()) {
+    if (Meteor.user()) {
+      FlowRouter.go('repos');
+    }
 
-  onData(null, {});
+    onData(null, {});
+  }
 }

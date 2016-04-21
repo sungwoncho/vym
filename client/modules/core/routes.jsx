@@ -1,14 +1,14 @@
 import React from 'react';
 import {mount} from 'react-mounter';
 
-import MainLayout from './components/main_layout.jsx';
+import MainLayout from './containers/main_layout';
 import WizardLayout from './components/wizard_layout.jsx';
 
 import Home from './containers/home';
-import Dashboard from './containers/dashboard';
 import Wizard from './containers/wizard';
 import Repos from './containers/repos';
 import Repo from './containers/repo';
+import AutoLogin from './containers/auto_login';
 
 export default function (injectDeps, {FlowRouter}) {
   const MainLayoutCtx = injectDeps(MainLayout);
@@ -28,6 +28,15 @@ export default function (injectDeps, {FlowRouter}) {
     action() {
       mount(MainLayoutCtx, {
         content: () => (<Repos />)
+      });
+    }
+  });
+
+  FlowRouter.route('/auto_login', {
+    name: 'auto_login',
+    action() {
+      mount(MainLayoutCtx, {
+        content: () => (<AutoLogin />)
       });
     }
   });
