@@ -18,5 +18,9 @@ export default {
 
   clearReposToAdd({Collections}) {
     Collections.ReposToAdd.remove({});
+  },
+
+  reloadRoute({FlowRouter}) {
+    FlowRouter.reload();
   }
 };

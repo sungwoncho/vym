@@ -1,7 +1,11 @@
 import React from 'react';
 import _ from 'lodash';
 
-const PrivateRepoToggleBtn = ({addScope, removeScope, currentScopes, onSuccess}) => {
+const PrivateRepoToggleBtn = ({addScope, removeScope, currentScopes, reloadRoute}) => {
+  function onSuccess() {
+    reloadRoute();
+  }
+
   function handleAddScope(scopeToAdd, e) {
     e.preventDefault();
     addScope({scopeToAdd}, onSuccess);

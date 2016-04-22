@@ -14,7 +14,8 @@ export const composer = ({context}, onData) => {
 export const depsMapper = (context, actions) => ({
   context: () => context,
   addScope: actions.users.addScope,
-  removeScope: actions.users.removeScope
+  removeScope: actions.users.removeScope,
+  reloadRoute: actions.repos.reloadRoute
 });
 
 export default composeAll(
