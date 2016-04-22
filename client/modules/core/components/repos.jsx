@@ -16,7 +16,8 @@ const Repos = ({repos, addedRepos}) => {
   // Overwrite repo if added repo exists. notAdded flag is overwritten.
   addedRepos.forEach(addedRepo => {
     let matchingRepoIndex = _.findIndex(repos, {id: addedRepo.id});
-    if (matchingRepoIndex) {
+
+    if (matchingRepoIndex > -1) {
       repos[matchingRepoIndex] = addedRepo;
     }
   });

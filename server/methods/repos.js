@@ -58,6 +58,10 @@ export default function () {
     },
 
     'repos.activate'(repo) {
+      if (!repo.permissions.admin) {
+        return console.log('You need to be an admin');
+      }
+
       repo.adminIds = [ this.userId ];
       repo.collaboratorIds = [ this.userId ];
 

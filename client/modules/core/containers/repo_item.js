@@ -5,7 +5,10 @@ import RepoItem from '../components/repo_item.jsx';
 export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
 
-  onData(null, {});
+  if (Meteor.subscribe('currentUser').ready()) {
+    let currentUser = Meteor.user();
+    onData(null, {currentUser});
+  }
 };
 
 export const depsMapper = (context, actions) => ({

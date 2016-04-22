@@ -60,10 +60,11 @@ export default function () {
 
     'users.syncAccessWithGithub'(targetUserId) {
       this.unblock();
-      console.log('syncing access with GitHub for', targetUserId);
 
       let allRepoIds = [];
       let userId = targetUserId || this.userId;
+
+      console.log('syncing access with GitHub for', userId);
 
       let repos = Meteor.call('repos.getAll', userId);
 
