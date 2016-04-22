@@ -15,26 +15,22 @@ const Repos = ({repos, addedRepos}) => {
   // Overwrite repo if added repo exists. notAdded flag is overwritten.
   addedRepos.forEach(addedRepo => {
     let matchingRepoIndex = _.findIndex(repos, {id: addedRepo.id});
-    console.log('matching repo', addedRepo.full_name);
-    console.log(addedRepo.notAdded);
     if (matchingRepoIndex) {
-      console.log('bef', repos[matchingRepoIndex].notAdded);
-
       repos[matchingRepoIndex] = addedRepo;
-      console.log('aft', repos[matchingRepoIndex].notAdded);
-
     }
   });
 
   return (
     <div className="container">
       <div className="row">
-        <div className="col-xs-8 col-xs-offset-2">
+        <div className="col-xs-12">
           <EnsureLoggedIn>
-            <ul className="repo-list list-unstyled">
-              <PrivateRepoToggleBtn />
+            <div className="repo-list-container">
+              <div className="repo-list-control">
+                <PrivateRepoToggleBtn />
+              </div>
               <RepoList repos={repos} type="add" />
-            </ul>
+            </div>
           </EnsureLoggedIn>
         </div>
       </div>

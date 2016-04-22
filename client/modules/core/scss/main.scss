@@ -378,20 +378,39 @@ html {
 
 .repo-list-container {
   margin-top: 20px;
+  border: 1px solid #868686;
+  border-radius: 5px;
+  padding: 3em 2em;
+
+  .repo-list-control {
+    margin-bottom: 30px;
+  }
 }
 
 .repo-item {
-  background-color: #F1F1F1;
-  padding: 0.8em;
-  margin-bottom: 10px;
+  padding: 1.3em;
+  border-bottom: 1px solid #868686;
   overflow: auto;
+
+  .repo-item-info {
+    font-size: 1.5em;
+  }
+
+  .octicon {
+    font-size: 24px;
+    margin-right: 8px;
+  }
+
+  .fa-github {
+    margin-left: 10px;
+  }
 
   &:hover {
     background-color: #FDFDFD;
   }
 
-  a {
-    color: inherit;
+  .repo-link {
+    color: #3E729E;
   }
 
   .repo-name {
