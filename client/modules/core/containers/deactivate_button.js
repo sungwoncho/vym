@@ -1,21 +1,19 @@
 import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
 
-import RepoItem from '../components/repo_item.jsx';
+import DeactivateButton from '../components/deactivate_button.jsx';
 
 export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
 
-  if (Meteor.subscribe('currentUser').ready()) {
-    let currentUser = Meteor.user();
-    onData(null, {currentUser});
-  }
+  onData(null, {});
 };
 
 export const depsMapper = (context, actions) => ({
-  context: () => context
+  context: () => context,
+  removeRepo: actions.repos.removeRepo
 });
 
 export default composeAll(
   composeWithTracker(composer),
   useDeps(depsMapper)
-)(RepoItem);
+)(DeactivateButton);
