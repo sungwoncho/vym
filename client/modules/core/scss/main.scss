@@ -99,6 +99,21 @@ html {
   flex-direction: column;
   padding: 0;
 
+  .empty-slide {
+    padding-top: 20em;
+    text-align: center;
+
+    h2 {
+      font-size: 3em;
+    }
+  }
+
+  .btn {
+    .fa {
+      margin-right: auto;
+    }
+  }
+
   &.container-fluid {
     padding-left: 0;
     padding-right: 0;
@@ -151,6 +166,7 @@ html {
   padding: 1em 2em;
   overflow: scroll;
   flex: 1;
+  flex-direction: column;
 
   .section {
     margin-bottom: 10px;
@@ -163,7 +179,6 @@ html {
   flex: 1;
   overflow-y: scroll;
   padding-left: 10px;
-  padding-right: 10px;
 
   .file-list {
 

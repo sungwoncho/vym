@@ -11,8 +11,7 @@ export const composer = ({context, repoName, ownerName, prNumber}, onData) => {
 };
 
 export const depsMapper = (context, actions) => ({
-  context: () => context,
-  addToSlide: actions.slideDecks.addToSlide
+  context: () => context
 });
 
 export default composeAll(
