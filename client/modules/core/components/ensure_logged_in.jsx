@@ -10,6 +10,6 @@ const NotLoggedInMessage = () => (
   <div>
     Please log in to view this page. <a href="/">Go back to main page.</a>
   </div>
-)
+);
 
 export default EnsureLoggedIn;

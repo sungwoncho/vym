@@ -4,6 +4,7 @@ import _ from 'lodash';
 import RepoList from './repo_list.jsx';
 import PrivateRepoToggleBtn from '../containers/private_repo_toggle_btn';
 import EnsureLoggedIn from '../containers/ensure_logged_in';
+import OnboardingGuide from '../containers/onboarding_guide';
 
 const Repos = ({repos, addedRepos}) => {
   // mark all repos as notAdded (they come from GitHub)
@@ -25,6 +26,7 @@ const Repos = ({repos, addedRepos}) => {
       <div className="row">
         <div className="col-xs-12">
           <EnsureLoggedIn>
+            <OnboardingGuide />
             <div className="repo-list-container">
               <div className="repo-list-control">
                 <PrivateRepoToggleBtn />

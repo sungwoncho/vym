@@ -677,3 +677,17 @@ html {
   }
 }
 // loading-repos ends
+
+
+// onboarding-guide
+.onboarding-guide {
+  border: 3px solid #6082CE;
+  padding: 1.2em 2em;
+  border-radius: 8px;
+
+  .step-title {
+    font-size: 1.4em;
+    margin-bottom: 20px;
+  }
+}
+// onboarding-guide ends
