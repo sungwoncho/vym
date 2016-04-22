@@ -638,3 +638,23 @@ html {
   }
 }
 // stepwizard ends
+
+
+// loading-repos
+.loading-repos {
+  padding-top: 7em;
+  padding-bottom: 7em;
+
+  .loader {
+    display: block;
+    margin-bottom: 30px;
+    font-size: 8em;
+    -webkit-animation: fa-spin 1.6s infinite linear;
+    animation: fa-spin 1.6s infinite linear;
+  }
+
+  .loading-message {
+    font-size: 30px;
+  }
+}
+// loading-repos ends

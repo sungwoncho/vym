@@ -1,30 +1,28 @@
-import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
+import {useDeps, composeAll, composeWithTracker, composeWithPromise, compose} from 'mantra-core';
 
 import Repos from '../components/repos.jsx';
+import LoadingRepos from '../components/loading_repos.jsx';
 
 export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
 
-  let reposToAdd = Collections.ReposToAdd.find({activated: false}).fetch();
-
-  if (Meteor.subscribe('adminRepos').ready()) {
-    let repos = Collections.Repos.find({adminId: this.userId});
-
+  if (Meteor.subscribe('collaboratingRepos').ready() &&
+      Meteor.subscribe('currentUser').ready()) {
+    console.log('composer running');
+    let user = Meteor.user();
+    let addedRepos = Collections.Repos.find({collaboratorIds: user._id}).fetch();
+    console.log('addedRepos', addedRepos);
     onData(null, {
-      repos,
-      reposToAdd
+      addedRepos
     });
   }
 };
 
 export const depsMapper = (context, actions) => ({
-  context: () => context,
-  activateRepo: actions.repos.activateRepo,
-  getReposToAdd: actions.repos.getReposToAdd,
-  clearReposToAdd: actions.repos.clearReposToAdd
+  context: () => context
 });
 
 export default composeAll(
-  composeWithTracker(composer),
+  composeWithTracker(composer, LoadingRepos),
   useDeps(depsMapper)
 )(Repos);

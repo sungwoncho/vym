@@ -1,53 +1,20 @@
 import React from 'react';
 
-import AddRepoListItem from '../containers/add_repo_list_item';
-import {pathFor} from '/client/modules/core/libs/helpers';
+import RepoItem from '../containers/repo_item';
 
-/**
- * @param {String} type - 'add', or 'normal'
- */
-const RepoList = ({repos, type = 'normal'}) => {
-  const ItemComponent = ItemComponentMap[type];
-
+const RepoList = ({repos}) => {
   return (
     <div className="repo-list-container">
       <ul className="list-unstyled repo-list">
         {
           repos.map(function (repo) {
-            return <ItemComponent repo={repo}
-                      key={repo._id} />;
+            return <RepoItem repo={repo}
+                      key={repo.id} />;
           })
         }
       </ul>
     </div>
   );
-};
-
-const RepoItem = ({repo}) => (
-  <li className="repo-item">
-    <a href={pathFor('repo', {ownerName: repo.owner.login, repoName: repo.name})}
-      className="repo-item-link">
-      <div>
-        <span className="octicon octicon-repo"></span>
-        <div className="repo-name mr10">
-          {repo.owner.login}/{repo.name}
-        </div>
-        {
-          repo.private ? <span className="label label-warning mr10">private</span> :
-          <span></span>
-        }
-        {
-          repo.fork ? <span className="label label-default mr10">fork</span> :
-          <span></span>
-        }
-      </div>
-    </a>
-  </li>
-);
-
-const ItemComponentMap = {
-  add: AddRepoListItem,
-  normal: RepoItem
 };
 
 export default RepoList;

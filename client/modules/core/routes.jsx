@@ -9,8 +9,9 @@ import Wizard from './containers/wizard';
 import Repos from './containers/repos';
 import Repo from './containers/repo';
 import AutoLogin from './containers/auto_login';
+import LoadingRepos from './components/loading_repos.jsx';
 
-export default function (injectDeps, {FlowRouter}) {
+export default function (injectDeps, {FlowRouter, Meteor}) {
   const MainLayoutCtx = injectDeps(MainLayout);
   const WizardLayoutCtx = injectDeps(WizardLayout);
 
@@ -27,7 +28,13 @@ export default function (injectDeps, {FlowRouter}) {
     name: 'repos',
     action() {
       mount(MainLayoutCtx, {
-        content: () => (<Repos />)
+        content: () => (<LoadingRepos />)
+      });
+
+      Meteor.call('repos.getAll', function (err, repos) {
+        mount(MainLayoutCtx, {
+          content: () => (<Repos repos={repos} />)
+        });
       });
     }
   });

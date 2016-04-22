@@ -62,6 +62,16 @@ export default function () {
       repo.collaboratorIds = [ this.userId ];
 
       Repos.insert(repo);
+    },
+
+    'repos.remove'(repoId) {
+      let repo = Repos.findOne(repoId);
+
+      if (!_.includes(repo.adminIds, this.userId)) {
+        return;
+      }
+
+      Repos.remove(repoId);
     }
   });
 }

@@ -1,7 +1,11 @@
 export default {
-  activateRepo({Meteor, Collections}, repo) {
-    Collections.ReposToAdd.update({id: repo.id}, {activated: true}); // Update local collection
+  activateRepo({Meteor}, repo) {
+    repo.notAdded = false;
     Meteor.call('repos.activate', repo);
+  },
+
+  removeRepo({Meteor}, repoId) {
+    Meteor.call('repos.remove', repoId);
   },
 
   getReposToAdd({Meteor, Collections}) {

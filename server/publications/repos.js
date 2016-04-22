@@ -16,7 +16,7 @@ export default function () {
       return;
     }
 
-    return Repos.find({'vym.collaboratorIds': this.userId});
+    return Repos.find({collaboratorIds: this.userId});
   });
 
 
