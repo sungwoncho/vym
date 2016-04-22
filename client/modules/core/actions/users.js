@@ -47,7 +47,7 @@ export default {
     });
   },
 
-  addScope({Meteor, FlowRouter}, {scopeToAdd, redirectPath}, done) {
+  addScope({Meteor, FlowRouter, _}, {scopeToAdd, redirectPath}, done) {
     Meteor.call('users.getCurrentScopes', function (err, oldScopes) {
       if (err) {
         return console.log('Error occurred while getting the current scope', err);
