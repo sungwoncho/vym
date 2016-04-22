@@ -1,11 +1,17 @@
 import React from 'react';
 
 const WizardHeader = ({slideDeck}) => {
-  let prHref = `https://github.com/${slideDeck.ownerName}/${slideDeck.repoName}/pull/${slideDeck.prNumber}`;
+  let prUrl =
+    'https://github.com/' +
+    `${slideDeck.ownerName}/` +
+    `${slideDeck.repoName}/` +
+    'pull/' +
+    `${slideDeck.prNumber}`;
 
   return (
     <div className="w-header">
-      PR #{slideDeck.prNumber} <a href={prHref} target="_blank"><i className="fa fa-github"></i></a>
+      Pull request #{slideDeck.prNumber}
+      <a href={prUrl} target="_blank" className="ml10"><i className="fa fa-github"></i></a>
     </div>
   );
 };

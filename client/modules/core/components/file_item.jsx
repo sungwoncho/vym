@@ -7,16 +7,18 @@ function baseName(str) {
 
 function getTooltipText(file, currentSlideNum) {
   if (file.vym.slideNumber) {
-    return `Added on the slide #${file.vym.slideNumber}`;
+    return `Already added on #${file.vym.slideNumber}. Click to go to the slide.`;
   } else {
     return `Click to add to the slide #${currentSlideNum}`;
   }
 }
 
-const FileItem = ({file, addToSlide, slideDeck, currentSlideNum}) => {
+const FileItem = ({file, addToSlide, slideDeck, currentSlideNum, goToSlide}) => {
   function onFileClick() {
     if (!file.vym.slideNumber) { // if not already added to a slide
       addToSlide(slideDeck._id, currentSlideNum, file.filename);
+    } else {
+      goToSlide(file.vym.slideNumber);
     }
   }
 

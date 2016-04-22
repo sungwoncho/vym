@@ -4,6 +4,8 @@ import FileList from '../containers/file_list';
 import Preview from '../containers/preview';
 import ActionBar from '../containers/action_bar';
 import WizardHeader from '../containers/wizard_header';
+import {pathFor} from '/client/modules/core/libs/helpers';
+
 
 class Wizard extends React.Component {
   componentDidMount() {
@@ -35,7 +37,9 @@ class Wizard extends React.Component {
               slideDeck={slideDeck}
               currentSlideNum={currentSlideNum} />
             <div className="w-sidebar-footer">
-              vym
+              <a href={pathFor('repo', {ownerName, repoName})}>
+                Back to repo
+              </a>
             </div>
           </div>
           <div className="col-sm-12 col-md-9 w-preview">
