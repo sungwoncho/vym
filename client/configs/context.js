@@ -5,6 +5,7 @@ import {ReactiveDict} from 'meteor/reactive-dict';
 import {Tracker} from 'meteor/tracker';
 import {Accounts} from 'meteor/accounts-base';
 import _ from 'lodash';
+import moment from 'moment';
 
 export default function () {
   return {
@@ -14,6 +15,7 @@ export default function () {
     LocalState: new ReactiveDict(),
     Tracker,
     Accounts,
-    _
+    _,
+    moment
   };
 }

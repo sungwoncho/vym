@@ -40,6 +40,7 @@ export default function () {
         let nextPage = getNextPage(repos.meta.link);
 
         repos = repos.map(function (repo) {
+          console.log('name', repo.name);
           repo.activated = activatedRepoIds.indexOf(repo.id) !== -1;
           return repo;
         });

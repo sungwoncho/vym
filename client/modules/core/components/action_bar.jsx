@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 
 import ReorderAction from '../containers/reorder_action';
 
@@ -49,6 +50,10 @@ const ActionBar = ({currentSlideNum, slideDeck, goToSlide, addSlide, removeSlide
 
         <ReorderAction slideDeck={slideDeck} currentSlideNum={currentSlideNum} />
       </div>
+
+      <small className="pull-xs-right saved-ago">
+        Last saved at {moment(slideDeck.updatedAt).format('MMM DD hh:mm:ss')}
+      </small>
     </div>
   );
 };

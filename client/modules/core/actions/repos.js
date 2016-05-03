@@ -1,7 +1,13 @@
 export default {
-  activateRepo({Meteor}, repo) {
+  activateRepo({Meteor, FlowRouter}, repo) {
     repo.notAdded = false;
-    Meteor.call('repos.activate', repo);
+    Meteor.call('repos.activate', repo, function (err, res) {
+      if (err) {
+        return console.log(err);
+      }
+
+      FlowRouter.go('repo', {ownerName: repo.owner.login, repoName: repo.name});
+    });
   },
 
   removeRepo({Meteor}, repoId) {

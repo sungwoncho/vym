@@ -124,7 +124,7 @@ html {
   }
 
   .w-header {
-    height: 40px;
+    height: 75px;
     background-color: #eee;
     text-align: center;
     font-size: 1.3em;
@@ -220,6 +220,10 @@ html {
 
   div {
     display: inline-block;
+  }
+
+  .saved-ago {
+    font-size: 20px;
   }
 }
 
