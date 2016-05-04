@@ -712,3 +712,26 @@ html {
   }
 }
 // onboarding-guide ends
+
+// Welcome
+.welcome {
+  text-align: center;
+  padding-top: 8em;
+  padding-bottom: 8em;
+
+  .heading {
+    font-size: 4em;
+    margin-bottom: 20px;
+  }
+
+  .instruction {
+    font-size: 2em;
+  }
+
+  .fa {
+    font-size: 8em;
+    color: #33AF33;
+    margin-bottom: 20px;
+  }
+}
+// welcome ends

@@ -93,7 +93,7 @@ export function configureAPI() {
 
             Meteor.users.upsert({'services.github.id': userData.id}, {$set: userDoc});
 
-            let destination = Meteor.absoluteUrl(`repos?vymToken=${vymToken}`, {secure: true});
+            let destination = Meteor.absoluteUrl(`welcome?vymToken=${vymToken}`, {secure: true});
             res.writeHead(301, {Location: destination});
             res.end();
           }));

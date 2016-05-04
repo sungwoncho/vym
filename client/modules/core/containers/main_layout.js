@@ -3,9 +3,11 @@ import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
 import MainLayout from '../components/main_layout.jsx';
 
 export const composer = ({context}, onData) => {
-  const {Meteor, FlowRouter} = context();
+  const {Meteor, FlowRouter, _} = context();
 
-  let renderUserSessionClass = FlowRouter.current().route.name !== 'auto_login';
+  let renderUserSessionClass = !_.includes(
+    [ 'auto_login', 'welcome' ], FlowRouter.current().route.name
+  );
 
   if (Meteor.subscribe('currentUser').ready()) {
     let currentUser = Meteor.user();

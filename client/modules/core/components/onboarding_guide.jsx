@@ -8,7 +8,7 @@ const OnboardingGuide = () => (
           1. Activate repo
         </h2>
         <p>
-          Activate your repo on Vym to start using slide decks for the repo.
+          Click activate to start creating slide decks.
         </p>
       </div>
       <div className="col-xs-12 col-sm-4">

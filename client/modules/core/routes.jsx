@@ -10,6 +10,7 @@ import Repos from './containers/repos';
 import Repo from './containers/repo';
 import AutoLogin from './containers/auto_login';
 import LoadingRepos from './components/loading_repos.jsx';
+import Welcome from './components/welcome.jsx';
 
 export default function (injectDeps, {FlowRouter, Meteor}) {
   const MainLayoutCtx = injectDeps(MainLayout);
@@ -45,6 +46,15 @@ export default function (injectDeps, {FlowRouter, Meteor}) {
       mount(MainLayoutCtx, {
         content: () => (<AutoLogin />)
       });
+    }
+  });
+
+  FlowRouter.route('/welcome', {
+    name: 'welcome',
+    action() {
+      mount(MainLayoutCtx, {
+        content: () => (<Welcome />)
+      })
     }
   });
 
