@@ -7,14 +7,18 @@ import GithubAPI from 'github4';
 import _ from 'lodash';
 
 export function configureAPI() {
+
+  // Returns 204 if no repo is found
   Picker.route('/api/v1/slide_decks/:ownerName/:repoName/:prNumber', function (params, req, res) {
     let vymToken = params.query.vymToken;
 
     let repo = Repos.findOne({'owner.login': params.ownerName, name: params.repoName});
     let user = Meteor.users.findOne({vymToken});
     console.log('vymToken', vymToken);
+    console.log('repo found', repo);
 
     if (!repo) {
+      res.statusCode = 204;
       res.end();
       return;
     }
@@ -117,7 +121,6 @@ export function configureAPI() {
       'owner.login': params.ownerName,
       name: params.repoName,
     });
-    console.log('repo found', repo);
 
     let response = {
       activated: Boolean(repo)
