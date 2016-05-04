@@ -12,6 +12,12 @@ export function configureAPI() {
 
     let repo = Repos.findOne({'owner.login': params.ownerName, name: params.repoName});
     let user = Meteor.users.findOne({vymToken});
+    console.log('vymToken', vymToken);
+
+    if (!repo) {
+      res.end();
+      return;
+    }
 
     if (_.includes(repo.collaboratorIds, user._id) || repo.isDemo()) {
       let slideDeck = SlideDecks.findOne({
@@ -111,6 +117,7 @@ export function configureAPI() {
       'owner.login': params.ownerName,
       name: params.repoName,
     });
+    console.log('repo found', repo);
 
     let response = {
       activated: Boolean(repo)
