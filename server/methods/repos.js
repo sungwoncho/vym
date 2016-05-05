@@ -36,7 +36,7 @@ export default function () {
       });
 
       function getRepos(page = 1) {
-        let repos = Meteor.wrapAsync(github.repos.getAll)({page, per_page: 50});
+        let repos = Meteor.wrapAsync(github.repos.getAll)({page, per_page: 50, visibility: 'all'});
         let nextPage = getNextPage(repos.meta.link);
 
         repos = repos.map(function (repo) {
