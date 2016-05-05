@@ -12,7 +12,7 @@ import AutoLogin from './containers/auto_login';
 import LoadingRepos from './components/loading_repos.jsx';
 import Welcome from './components/welcome.jsx';
 
-export default function (injectDeps, {FlowRouter, Meteor}) {
+export default function (injectDeps, {FlowRouter, Meteor, Tracker}) {
   const MainLayoutCtx = injectDeps(MainLayout);
   const WizardLayoutCtx = injectDeps(WizardLayout);
 
@@ -32,9 +32,16 @@ export default function (injectDeps, {FlowRouter, Meteor}) {
         content: () => (<LoadingRepos />)
       });
 
-      Meteor.call('repos.getAll', function (err, repos) {
-        mount(MainLayoutCtx, {
-          content: () => (<Repos repos={repos} />)
+      Tracker.autorun(function () {
+        let user = Meteor.user();
+
+        Tracker.nonreactive(function () {
+          Meteor.call('repos.getAll', function (err, repos) {
+            console.log('repos', repos);
+            mount(MainLayoutCtx, {
+              content: () => (<Repos repos={repos} />)
+            });
+          });
         });
       });
     }

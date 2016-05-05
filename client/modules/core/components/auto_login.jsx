@@ -14,8 +14,11 @@ class AutoLogin extends React.Component {
   render() {
 
     return (
-      <div>
-        You are being logged in
+      <div className="text-xs-center auto-login">
+        <i className="fa fa-chrome fa-spin loader" aria-hidden="true"></i>
+        <div className="loading-message">
+          Chrome extension is automatically logging you in...
+        </div>
       </div>
     );
   }
